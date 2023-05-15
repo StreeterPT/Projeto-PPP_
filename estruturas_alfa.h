@@ -1,20 +1,23 @@
+#define MAX_NOME 15
+#define MAX_TELEFONE 9
 
 typedef struct Cliente {
-  char nome[15];
-  char apelido[15];
-  char email[30];
-  int n_telefone;
+  char nome[MAX_NOME];
+  char apelido[MAX_NOME];
+  char n_telemovel[MAX_TELEFONE];
 } Cliente;
 
 typedef struct Reserva Reserva;
-
+// tipo 1 lavagem;
+//tipo 2 manutencao;
 struct Reserva {
   Cliente* cliente;
   int ano;
   int mes;
   int dia;
   int hora;
-  int slot;
+  int minutos;
+  int tipo;
   Reserva* next;
 };
 
@@ -25,10 +28,3 @@ struct listaReservas {
   Reserva* tail;
 };
 
-// Initialize a new Reserva list
-listaReservas* criar_lista_reservas() {
-  listaReservas* lista = (listaReservas*)malloc(sizeof(listaReservas));
-  lista->head = NULL;
-  lista->tail = NULL;
-  return lista;
-}
