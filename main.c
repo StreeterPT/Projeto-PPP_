@@ -9,6 +9,7 @@
 #include "structs_pre_reservas.h"
 #include "funcoes.h"
 #include "stack.h"
+#include <limits.h>
 
 
 /*Horario e slots de tempo*/
@@ -128,7 +129,8 @@ int main() {
             scanf("%s",nome);
             printf("Introduza o seu apelido\n");
             scanf("%s",apelido);
-            check_if_there_is_reservation_and_erase(lista,nome,apelido); 
+            check_if_there_is_reservation_and_erase_2(lista,lista_pre,nome,apelido);
+            sleep(3); 
             break;
 
             
@@ -144,6 +146,7 @@ int main() {
             printf("Introduza o seu apelido\n");
             scanf("%s",apelido);
             check_if_there_is_pre_reservation_and_erase(lista_pre,nome,apelido); 
+            sleep(2);
             break;
 
 
@@ -165,7 +168,7 @@ int main() {
             print_Reservas(lista);
             printf("\nLista de Pre-Reservas:\n");
             print_Pre_Reservas(lista_pre);
-            sleep(4);
+            sleep(3);
             break;
     case 6 :
             if(lista->head != NULL){advance_time_with_pre_reservations(lista,lista_pre);printf("A reserva foi realizada.\n");}
@@ -175,15 +178,18 @@ int main() {
     case 7 :
             printf("A carregar os dados do ficheiro... \n");
             sleep(1);
-            readReservationsFromFile(lista,lista_pre);
+            readReservationsFromFile(lista);
+            readPreReservationsFromFile(lista_pre);
             printf("Dados carregados com sucesso.\n");
+            sleep(2);
             break;
 
             
     case 8 : 
             printf("A salvar os dados...\n");
             sleep(1);
-            writeReservationsToFile(lista,lista_pre);
+            writeReservationsToFile(lista);
+            writePreReservationsToFile(lista_pre);
             printf("Dados salvos.\n");
             sleep(2);
             break;

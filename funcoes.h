@@ -562,7 +562,7 @@ void check_if_there_is_reservation_and_erase_2(listaReservas* lista, lista_Pre_R
             if (res->tipo == 2) {
                 printf("\tManutenção\n");
             }
-            printf("Deseja cancelar esta reserva?\n\n1. Sim\n2. Não\n");
+            printf("Deseja cancelar esta reserva?\n\n1. Sim\n2. Nao\n");
             scanf("%d", &user_inp);
 
             if (user_inp == 1) {
@@ -591,7 +591,7 @@ void check_if_there_is_reservation_and_erase_2(listaReservas* lista, lista_Pre_R
                 Pre_Reserva* previous_pre_reserva = NULL;
                 
                 while (current_pre_reserva != NULL) {
-                if (is_available(lista,current_pre_reserva->ano, current_pre_reserva->mes,  current_pre_reserva->dia,current_pre_reserva->hora,  current_pre_reserva->minutos, current_pre_reserva->tipo)){
+                if (!is_available_pre_reservas(lista_pre_reservas,ano,mes,dia,hora,minutos,tipo) && is_available(lista,current_pre_reserva->ano, current_pre_reserva->mes,  current_pre_reserva->dia,current_pre_reserva->hora,  current_pre_reserva->minutos, current_pre_reserva->tipo)){
                     Cliente* cliente_ = (Cliente*) malloc(sizeof(Cliente));
                     strcpy(cliente_->nome,current_pre_reserva->cliente->nome);
                     strcpy(cliente_->apelido,current_pre_reserva->cliente->apelido);
